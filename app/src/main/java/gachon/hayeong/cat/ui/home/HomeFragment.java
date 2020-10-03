@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import gachon.hayeong.cat.R;
@@ -29,6 +30,7 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
     private Camera camera;
     private MediaRecorder mediaRecorder;
     private Button btn_record;
+    private Button btn_stop;
     private SurfaceView surfaceView;
     private SurfaceHolder surfaceHolder;
     private boolean recording = false;
@@ -57,21 +59,21 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
                 .check();
 
         btn_record = (Button) root.findViewById(R.id.btn_record);
+        btn_stop = (Button) root.findViewById(R.id.btn_stop);
         btn_record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (recording) {  //녹화 끝낼 때
-                    mediaRecorder.stop();
-                    mediaRecorder.release();
-                    camera.lock();
-                    recording = false;
-                } else {    //녹화 시작할 때
+                if (!recording) {     //녹화 중이지 않을 때 녹화 시작하기
                     getActivity().runOnUiThread(new Runnable() {
 
                         @Override
                         public void run() {
-                            Toast.makeText(context, "녹화가 시작되었습니다.", Toast.LENGTH_SHORT);
+                            Toast.makeText(context, "녹화가 시작되었습니다.", Toast.LENGTH_SHORT).show();
                             try {
+                                Camera.Parameters params = camera.getParameters();
+                                params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
+                                camera.setParameters(params);
+
                                 mediaRecorder = new MediaRecorder();
                                 camera.unlock();
                                 mediaRecorder.setCamera(camera);
@@ -93,6 +95,20 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
                 }
             }
         });
+        btn_stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (recording) {    //녹화 끝낼 때
+                    mediaRecorder.stop();
+                    mediaRecorder.release();
+                    camera.lock();
+                    recording = false;
+
+                    Toast.makeText(context, "녹화가 종료되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         return root;
     }
 
@@ -117,7 +133,12 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-
+        try{
+            camera.setPreviewDisplay(holder);
+            camera.startPreview();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
