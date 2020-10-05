@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
                                 camera.setParameters(params);
 
                                 // CatEmotion 폴더 생성
-                                File rootPath = new File(Environment.getExternalStorageDirectory(), "CatEmotion");
+                                File rootPath = new File(Environment.getExternalStorageDirectory(), "/Movies/CatEmotion");
                                 if (!rootPath.exists()) {
                                     rootPath.mkdirs();
                                 }
@@ -87,7 +87,7 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
                                 // 현재 날짜 & 시간으로 파일명 설정
                                 SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                                 String today = transFormat.format(new Date());
-                                String path = "/sdcard/CatEmotion/" + today + ".mp4";
+                                String path = "/sdcard/Movies/CatEmotion/" + today + ".mp4";
 
                                 mediaRecorder = new MediaRecorder();
                                 camera.unlock();
