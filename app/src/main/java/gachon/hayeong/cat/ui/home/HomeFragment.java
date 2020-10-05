@@ -6,6 +6,7 @@ import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -21,8 +22,11 @@ import androidx.lifecycle.ViewModelProviders;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import gachon.hayeong.cat.R;
 
@@ -74,6 +78,17 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
                                 params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
                                 camera.setParameters(params);
 
+                                // CatEmotion 폴더 생성
+                                File rootPath = new File(Environment.getExternalStorageDirectory(), "CatEmotion");
+                                if (!rootPath.exists()) {
+                                    rootPath.mkdirs();
+                                }
+
+                                // 현재 날짜 & 시간으로 파일명 설정
+                                SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                String today = transFormat.format(new Date());
+                                String path = "/sdcard/CatEmotion/" + today + ".mp4";
+
                                 mediaRecorder = new MediaRecorder();
                                 camera.unlock();
                                 mediaRecorder.setCamera(camera);
@@ -81,7 +96,7 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
                                 mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
                                 mediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_720P));
                                 mediaRecorder.setOrientationHint(90);
-                                mediaRecorder.setOutputFile("/sdcard/test.mp4");
+                                mediaRecorder.setOutputFile(path);
                                 mediaRecorder.setPreviewDisplay(surfaceHolder.getSurface());
                                 mediaRecorder.prepare();
                                 mediaRecorder.start();
@@ -133,7 +148,7 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        try{
+        try {
             camera.setPreviewDisplay(holder);
             camera.startPreview();
         } catch (IOException e) {
