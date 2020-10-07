@@ -7,14 +7,14 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_ranking"
-        android:icon="@drawable/ic_baseline_bar_chart_24"
-        android:title="@string/title_ranking" />
-
-    <item
         android:id="@+id/navigation_album"
         android:icon="@drawable/ic_baseline_video_library_24"
         android:title="@string/title_album" />
+
+    <item
+        android:id="@+id/navigation_ranking"
+        android:icon="@drawable/ic_baseline_bar_chart_24"
+        android:title="@string/title_ranking" />
 
     <item
         android:id="@+id/navigation_settings"

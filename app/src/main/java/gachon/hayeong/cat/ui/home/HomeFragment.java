@@ -1,6 +1,7 @@
 package gachon.hayeong.cat.ui.home;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
@@ -31,6 +32,9 @@ import java.util.Date;
 import gachon.hayeong.cat.R;
 
 public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
+    private Context mContext;
+    private Activity mActivity;
+
     private Camera camera;
     private MediaRecorder mediaRecorder;
     private Button btn_record;
@@ -38,15 +42,21 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
     private SurfaceView surfaceView;
     private SurfaceHolder surfaceHolder;
     private boolean recording = false;
-    private Context context;
     private View root;
 
     private HomeViewModel homeViewModel;
 
+    public void onAttach(Context context) {
+        mContext = context;
+        if (context instanceof Activity) {
+            mActivity = (Activity) context;
+        }
+        super.onAttach(context);
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         root = inflater.inflate(R.layout.fragment_home, container, false);
-        context = container.getContext();
 //        final TextView textView = root.findViewById(R.id.text_home);
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
 //            @Override
@@ -55,7 +65,7 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
 //            }
 //        });
 
-        TedPermission.with(context)
+        TedPermission.with(mContext)
                 .setPermissionListener(permission)
                 .setRationaleMessage("녹화를 위하여 권한을 허용해주세요.")
                 .setDeniedMessage("권한이 거부되었습니다. 설정 > 권한에서 허용해주세요.")
@@ -72,7 +82,7 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
 
                         @Override
                         public void run() {
-                            Toast.makeText(context, "녹화가 시작되었습니다.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, "녹화가 시작되었습니다.", Toast.LENGTH_SHORT).show();
                             try {
                                 Camera.Parameters params = camera.getParameters();
                                 params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
@@ -119,7 +129,7 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
                     camera.lock();
                     recording = false;
 
-                    Toast.makeText(context, "녹화가 종료되었습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "녹화가 종료되었습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -130,7 +140,7 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
     PermissionListener permission = new PermissionListener() {
         @Override
         public void onPermissionGranted() {
-            Toast.makeText(context, "권한 허가", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "권한 허가", Toast.LENGTH_SHORT).show();
 
             camera = Camera.open();
             camera.setDisplayOrientation(90);
@@ -142,7 +152,7 @@ public class HomeFragment extends Fragment implements SurfaceHolder.Callback {
 
         @Override
         public void onPermissionDenied(ArrayList<String> deniedPermissions) {
-            Toast.makeText(context, "권한 거부", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "권한 거부", Toast.LENGTH_SHORT).show();
         }
     };
 
