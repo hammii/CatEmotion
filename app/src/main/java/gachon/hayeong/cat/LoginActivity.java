@@ -127,6 +127,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void isFirstLogin() {
         final String UID = firebaseAuth.getUid();
+
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        finish();
+
         databaseReference.child("UserList").child(UID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
