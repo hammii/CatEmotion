@@ -1,0 +1,292 @@
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\r\n\r\nandroid {\r\n    compileSdkVersion 30\r\n    buildToolsVersion \"30.0.2\"\r\n\r\n    defaultConfig {\r\n        applicationId \"com.example.catemotion\"\r\n        minSdkVersion 15\r\n        targetSdkVersion 30\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation fileTree(dir: \"libs\", include: [\"*.jar\"])\r\n    implementation 'androidx.appcompat:appcompat:1.2.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'\r\n    testImplementation 'junit:junit:4.12'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.2'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision a88a69e135ecc1cca5d9c16b976aaae17a897038)
++++ app/build.gradle	(date 1603553975895)
+@@ -26,8 +26,11 @@
+     implementation fileTree(dir: "libs", include: ["*.jar"])
+     implementation 'androidx.appcompat:appcompat:1.2.0'
+     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
++    implementation 'androidx.recyclerview:recyclerview:1.1.0'
++    implementation 'com.google.firebase:firebase-auth:19.4.0'
+     testImplementation 'junit:junit:4.12'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+-
++    implementation 'com.google.firebase:firebase-firestore:20.0.0'
++    implementation 'com.github.bumptech.glide:glide:4.11.0'
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_ranking.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:orientation=\"vertical\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n\r\n    <RelativeLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:layout_weight=\"1\"\r\n        android:background=\"#FFC8BFE7\">\r\n\r\n        <ImageView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:src=\"@drawable/ranking\">\r\n\r\n        </ImageView>\r\n\r\n    </RelativeLayout>\r\n\r\n\r\n    <ScrollView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:layout_weight=\"1\"\r\n        android:background=\"#FFFFFF\">\r\n\r\n        <TableLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\">\r\n\r\n            <ListView\r\n                android:id=\"@+id/listview1\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\">\r\n\r\n\r\n            </ListView>\r\n        </TableLayout>\r\n\r\n    </ScrollView>\r\n\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_ranking.xml	(revision a88a69e135ecc1cca5d9c16b976aaae17a897038)
++++ app/src/main/res/layout/fragment_ranking.xml	(date 1603541745569)
+@@ -7,7 +7,7 @@
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+-        android:layout_weight="1"
++        android:layout_weight="2"
+         android:background="#FFC8BFE7">
+ 
+         <ImageView
+@@ -20,25 +20,10 @@
+     </RelativeLayout>
+ 
+ 
+-    <ScrollView
++    <androidx.recyclerview.widget.RecyclerView
++        android:layout_height="match_parent"
+         android:layout_width="match_parent"
+-        android:layout_height="match_parent"
+         android:layout_weight="1"
+-        android:background="#FFFFFF">
+-
+-        <TableLayout
+-            android:layout_width="match_parent"
+-            android:layout_height="match_parent">
+-
+-            <ListView
+-                android:id="@+id/listview1"
+-                android:layout_width="match_parent"
+-                android:layout_height="match_parent">
+-
+-
+-            </ListView>
+-        </TableLayout>
+-
+-    </ScrollView>
++        android:id="@+id/recyclerview"/>
+ 
+ </LinearLayout>
+\ No newline at end of file
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\nbuildscript {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n    dependencies {\r\n        classpath \"com.android.tools.build:gradle:4.0.1\"\r\n\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build.gradle	(revision a88a69e135ecc1cca5d9c16b976aaae17a897038)
++++ build.gradle	(date 1603541036778)
+@@ -5,7 +5,7 @@
+         jcenter()
+     }
+     dependencies {
+-        classpath "com.android.tools.build:gradle:4.0.1"
++        classpath 'com.android.tools.build:gradle:4.1.0'
+ 
+         // NOTE: Do not place your application dependencies here; they belong
+         // in the individual module build.gradle files
+Index: app/src/main/java/com/example/catemotion/AddPostFragment.java
+===================================================================
+--- app/src/main/java/com/example/catemotion/AddPostFragment.java	(date 1603552817363)
++++ app/src/main/java/com/example/catemotion/AddPostFragment.java	(date 1603552817363)
+@@ -0,0 +1,23 @@
++package com.example.catemotion;
++
++import android.os.Bundle;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++
++import androidx.annotation.Nullable;
++import androidx.fragment.app.Fragment;
++
++public class AddPostFragment extends Fragment {
++    public static AddPostFragment newInstance(){
++        return new AddPostFragment();
++    }
++
++    @Nullable
++    @Override
++    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
++        View view = inflater.inflate(R.layout.fragment_add_post, container, false);
++
++        return view;
++    }
++}
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.catemotion\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\">\r\n        <activity android:name=\".MainActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision a88a69e135ecc1cca5d9c16b976aaae17a897038)
++++ app/src/main/AndroidManifest.xml	(date 1603553635743)
+@@ -18,4 +18,6 @@
+         </activity>
+     </application>
+ 
++    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
++
+ </manifest>
+\ No newline at end of file
+Index: app/src/main/res/layout/item_detail.xml
+===================================================================
+--- app/src/main/res/layout/item_detail.xml	(date 1603553177296)
++++ app/src/main/res/layout/item_detail.xml	(date 1603553177296)
+@@ -0,0 +1,63 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:orientation="vertical"
++    android:layout_width="match_parent"
++    android:layout_height="wrap_content">
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="50dp"
++        android:gravity="center_vertical"
++        android:orientation="horizontal">
++
++        <ImageView
++            android:layout_width="35dp"
++            android:layout_height="35dp"
++            android:layout_margin="7.5dp"
++            tools:src="@mipmap/ic_launcher"
++            android:id="@+id/userImageView"/>
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            tools:text="User Name"
++            android:id="@+id/userNameTextView"/>
++    </LinearLayout>
++
++    <ImageView
++        android:layout_width="match_parent"
++        android:layout_height="250dp"
++        android:scaleType="fitXY"
++        android:id="@+id/LoadedImageView"/>
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="50dp"
++        android:layout_marginLeft="8dp">
++
++        <ImageView
++            android:layout_width="35dp"
++            android:layout_height="35dp"
++            android:id="@+id/likeImageView"
++            app:srcCompat="@drawable/heart"/>
++
++    </LinearLayout>
++
++    <TextView
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginLeft="8dp"
++        tools:text="좋아요 0개"
++        android:id="@+id/likeTextView"/>
++
++    <TextView
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginBottom="35dp"
++        android:layout_marginLeft="8dp"
++        tools:text="사진 내용"
++        android:id="@+id/ContentsTextView"/>
++
++</LinearLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_add_post.xml
+===================================================================
+--- app/src/main/res/layout/fragment_add_post.xml	(date 1603552817387)
++++ app/src/main/res/layout/fragment_add_post.xml	(date 1603552817387)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:orientation="vertical" android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++
++</LinearLayout>
+\ No newline at end of file
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Wed Oct 14 15:08:03 KST 2020\r\ndistributionBase=GRADLE_USER_HOME\r\ndistributionPath=wrapper/dists\r\nzipStoreBase=GRADLE_USER_HOME\r\nzipStorePath=wrapper/dists\r\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-6.1.1-all.zip\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>x-windows-949
+===================================================================
+--- gradle/wrapper/gradle-wrapper.properties	(revision a88a69e135ecc1cca5d9c16b976aaae17a897038)
++++ gradle/wrapper/gradle-wrapper.properties	(date 1603541036806)
+@@ -1,6 +1,6 @@
+-#Wed Oct 14 15:08:03 KST 2020
++#Sat Oct 24 21:03:56 KST 2020
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-6.1.1-all.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-bin.zip
+Index: .idea/vcs.xml
+===================================================================
+--- .idea/vcs.xml	(date 1603540496483)
++++ .idea/vcs.xml	(date 1603540496483)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/compiler.xml
+===================================================================
+--- .idea/compiler.xml	(date 1603540972328)
++++ .idea/compiler.xml	(date 1603540972328)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="1.8" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleJvm\" value=\"1.8 (4)\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision a88a69e135ecc1cca5d9c16b976aaae17a897038)
++++ .idea/gradle.xml	(date 1603541751251)
+@@ -15,6 +15,7 @@
+           </set>
+         </option>
+         <option name="resolveModulePerSourceSet" value="false" />
++        <option name="useQualifiedModuleNames" value="true" />
+       </GradleProjectSettings>
+     </option>
+   </component>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_7\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision a88a69e135ecc1cca5d9c16b976aaae17a897038)
++++ .idea/misc.xml	(date 1603540972287)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
