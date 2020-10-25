@@ -2,6 +2,7 @@ package gachon.hayeong.cat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -26,6 +27,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import gachon.hayeong.cat.data.DTO.UserDTO;
 
 public class LoginActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 9001;
@@ -82,8 +85,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {    //이미 로그인 되어있는 상태
                     isFirstLogin();
+                    Log.d("First?---->", firebaseAuth.getCurrentUser().toString());
                 } else {
-
+                    Log.d("First?---->", firebaseAuth.getCurrentUser().toString());
                 }
             }
         };
@@ -97,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {    // 인증 성공.
                     Toast.makeText(getApplicationContext(), "구글 로그인 성공", Toast.LENGTH_SHORT).show();
                     isFirstLogin();
+                    finish();
                 } else {      // 인증 실패.
                     Toast.makeText(getApplicationContext(), "구글 로그인 실패", Toast.LENGTH_SHORT).show();
                 }
@@ -128,15 +133,22 @@ public class LoginActivity extends AppCompatActivity {
     private void isFirstLogin() {
         final String UID = firebaseAuth.getUid();
 
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-        finish();
+//        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+//        finish();
 
         databaseReference.child("UserList").child(UID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(getApplicationContext(), "자동로그인 되었습니다.", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                finish();
+                UserDTO user = snapshot.getValue(UserDTO.class);
+
+                if (user != null) {     //파이어베이스 DB에 구글 로그인 한 유저의 UID 정보가 등록되어있다면
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "자동로그인 되었습니다.", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, UserInfoActivity.class));
+                    finish();
+                }
             }
 
             @Override

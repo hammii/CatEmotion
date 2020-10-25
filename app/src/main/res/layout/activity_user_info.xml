@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserInfoActivity"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="16dp"
+            android:text="사용할 아이디를 입력해주세요.(영문,숫자 4~8자리) \n해당 아이디는 검색 용도로 사용됩니다."
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
+
+        <EditText
+            android:id="@+id/userID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/stateInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="중복 확인을 해주세요."
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end">
+            <Button
+                android:id="@+id/duplicate_confirm_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="중복확인"
+                android:layout_marginRight="5dp"
+                ></Button>
+            <Button
+                android:id="@+id/id_ok_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사용하기"
+                android:layout_marginRight="20dp"></Button>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
