@@ -24,8 +24,14 @@
         tools:layout="@layout/fragment_album" />
 
     <fragment
-        android:id="@+id/navigation_settings"
-        android:name="gachon.hayeong.cat.ui.settings.SettingsFragment"
-        android:label="@string/title_settings"
-        tools:layout="@layout/fragment_settings" />
+        android:id="@+id/navigation_community"
+        android:name="gachon.hayeong.cat.ui.community.CommunityFragment"
+        android:label="@string/title_community"
+        tools:layout="@layout/fragment_community" />
+
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_settings"-->
+<!--        android:name="gachon.hayeong.cat.ui.settings.SettingsFragment"-->
+<!--        android:label="@string/title_settings"-->
+<!--        tools:layout="@layout/fragment_settings" />-->
 </navigation>

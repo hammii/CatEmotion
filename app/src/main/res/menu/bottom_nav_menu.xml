@@ -17,7 +17,12 @@
         android:title="@string/title_ranking" />
 
     <item
-        android:id="@+id/navigation_settings"
+        android:id="@+id/navigation_community"
         android:icon="@drawable/ic_baseline_settings_24"
-        android:title="@string/title_settings" />
+        android:title="@string/title_community" />
+
+<!--    <item-->
+<!--        android:id="@+id/navigation_settings"-->
+<!--        android:icon="@drawable/ic_baseline_settings_24"-->
+<!--        android:title="@string/title_settings" />-->
 </menu>
