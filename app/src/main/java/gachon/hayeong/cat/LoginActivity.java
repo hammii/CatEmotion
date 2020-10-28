@@ -44,6 +44,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // 액션바 숨기기
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         // 파이어베이스 인증 객체 선언
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -83,11 +88,11 @@ public class LoginActivity extends AppCompatActivity {
         mListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (firebaseAuth.getCurrentUser() != null) {    //이미 로그인 되어있는 상태
+                if (firebaseAuth.getCurrentUser() != null) {    //이미 구글 로그인을 한번 했으면
                     isFirstLogin();
                     Log.d("First?---->", firebaseAuth.getCurrentUser().toString());
                 } else {
-                    Log.d("First?---->", firebaseAuth.getCurrentUser().toString());
+
                 }
             }
         };

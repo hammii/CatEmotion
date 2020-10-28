@@ -1,10 +1,12 @@
 package gachon.hayeong.cat.data.DTO;
 
-public class UserDTO {
+public class UserDTO extends Object {
     private String id;
     private String email;
 
-    public UserDTO(String id, String email){
+    public UserDTO(){ }
+
+    public UserDTO(String id, String email) {
         this.id = id;
         this.email = email;
     }

@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:textSize="16dp"
-            android:text="사용할 아이디를 입력해주세요.(영문,숫자 4~8자리) \n해당 아이디는 검색 용도로 사용됩니다."
+            android:text="사용할 아이디를 입력해주세요.(영문,숫자 4~8자리)"
             android:layout_gravity="center"
             android:gravity="center"
             />
