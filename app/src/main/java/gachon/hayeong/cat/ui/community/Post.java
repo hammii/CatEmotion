@@ -1,64 +1,71 @@
 package gachon.hayeong.cat.ui.community;
 
-import android.net.Uri;
+import java.util.Date;
 
 public class Post {
-    String nickName;
-    int userImage;
-    Uri postImage;
-    int likeNum;
-    String contents;
+    private String userImage;
+    private String userName;
+    //private String postVideo;
+    private String postImage;
+    private int likeCount;
+    private String postContents;
+    private Date uploadDate;
 
-    public Post(int userImage, String nickName){
-        this.userImage = userImage;
-        this.nickName = nickName;
-    }
+    public Post(){}
 
-    public Post(String nickName, int userImage, Uri postImage, int likeNum, String contents){
-        this.nickName = nickName;
-        this.userImage = userImage;
-        this.postImage = postImage;
-        this.likeNum = likeNum;
-        this.contents = contents;
-    }
-
-    public String getNickName(){
-        return nickName;
-    }
-
-    public void setNickName(String nickName){
-        this.nickName = nickName;
-    }
-
-    public int getUserImage(){
+    public String getUserImage(){
         return userImage;
     }
 
-    public void setUserImage(){
+    public void setUserImage(String userImage){
         this.userImage = userImage;
     }
 
-    public Uri getPostImage(){
+    public String getUserName(){
+        return userName;
+    }
+
+    public void setUserName(String userName){
+        this.userName = userName;
+    }
+
+    //public String getPostVideo(){
+    //    return postVideo;
+    //}
+
+    //public void setPostVideo(String postVideo){
+    //    this.postVideo = postVideo;
+    //}
+
+    public String getPostImage(){
         return postImage;
     }
 
-    public void setPostImage(){
+    public void setPostImage(String postImage){
         this.postImage = postImage;
     }
 
-    public int getLikeNum(){
-        return likeNum;
+    public int getLikeCount(){
+        return likeCount;
     }
 
-    public void setLikeNum(int likeNum){
-        this.likeNum = likeNum;
+    public void setLikeCount(int likeCount){
+        this.likeCount = likeCount;
     }
 
-    public String getContents(){
-        return contents;
+    public String getPostContents(){
+        return postContents;
     }
 
-    public void setContents(String contents){
-        this.contents = contents;
+    public void setPostContents(){
+        this.postContents = postContents;
+    }
+
+    public Date getUploadDate(){
+        return uploadDate;
+    }
+
+    public void setUploadDate(Date uploadDate){
+        this.uploadDate = uploadDate;
     }
 }

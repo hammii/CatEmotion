@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +60,7 @@ public class AlbumFragment extends Fragment {
     private Vector<Menu> getVideo() {
         String[] proj = {MediaStore.Video.Media._ID,
                 MediaStore.Video.Media.DISPLAY_NAME,
-                MediaStore.Video.Media.DATA
+                MediaStore.Video.Media.DATA,
         };
 
 //        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/CatEmotion/";
@@ -69,15 +68,17 @@ public class AlbumFragment extends Fragment {
 
 //        Uri uri = MediaStore.Files.getContentUri("external");
 
+//        String selection = android.provider.MediaStore.Video.Media.DATA + " like ? ";
+//        String[] sellectionArgs = new String[]{"%/sdcard/CatEmotion%"};
+
         Uri uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
 //        String orderBy = MediaStore.Video.Media.DATE_TAKEN;
-        Cursor cursor = mContext.getContentResolver().query(uri, proj, MediaStore.Video.Media.DATA + " like ? ", new String[] {"%CatEmotion%"}, null);
+        Cursor cursor = mContext.getContentResolver().query(uri, proj, null, null, null);
         Vector<Menu> menus = new Vector<>();
 
         assert cursor != null;
         while (cursor.moveToNext()) {
             String title = cursor.getString(1);
-            Log.e("title", title);
 
             long id = cursor.getLong(cursor.getColumnIndex(MediaStore.Video.Media._ID));
             Bitmap bitmap = MediaStore.Video.Thumbnails.getThumbnail(mContext.getContentResolver(), id, MediaStore.Video.Thumbnails.MINI_KIND, null);
@@ -85,8 +86,6 @@ public class AlbumFragment extends Fragment {
             // 썸네일 크기 변경할 때.
             //Bitmap thumbnail = ThumbnailUtils.extractThumbnail(bitmap, width, height);
             String data = cursor.getString(2);
-            Log.e("data", data);
-
             menus.add(new Menu(title, bitmap, Uri.parse(data)));
         }
 

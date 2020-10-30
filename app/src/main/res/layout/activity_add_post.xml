@@ -13,20 +13,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="동영상 첨부: "
+            android:text="사진 첨부: "
             android:layout_weight="1"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/et_videoLink"
+            android:id="@+id/et_imageLink"
             android:layout_weight="20"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="찾아보기"
-            android:id="@+id/btn_search_video"
+            android:id="@+id/btn_search_image"
             android:layout_weight="1"/>
     </LinearLayout>
 
@@ -43,6 +43,11 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:minLines="1"
+            android:maxLines="10"
+            android:scrollbars="vertical"
             android:id="@+id/et_explain"/>
     </LinearLayout>
 
