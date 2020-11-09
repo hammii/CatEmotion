@@ -39,7 +39,7 @@ public class ShowVideoDialog extends Dialog {
 //        String uriStr = this.videoUri.toString();
 //        uriStr = uriStr.substring(16, uriStr.length() - 12);
         binding.videoView.setVideoURI(this.videoUri);
-        Log.e("uri", this.videoUri.toString());
+        Log.e("uri",this.videoUri.toString());
 
         binding.videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override

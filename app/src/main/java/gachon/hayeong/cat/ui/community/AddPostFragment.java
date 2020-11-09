@@ -18,9 +18,9 @@ public class AddPostFragment extends Fragment {
         return new AddPostFragment();
     }
 
-    private EditText et_imageLink;
+    private EditText et_videoLink;
     private EditText et_explain;
-    private Button btn_search_image;
+    private Button btn_search_video;
     private Button btn_add;
     private Button btn_cancel;
 
@@ -28,13 +28,13 @@ public class AddPostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_post, null);
 
-        et_imageLink = (EditText) view.findViewById(R.id.et_imageLink);
+        et_videoLink = (EditText) view.findViewById(R.id.et_videoLink);
         et_explain = (EditText) view.findViewById(R.id.et_explain);
-        btn_search_image = (Button) view.findViewById(R.id.btn_search_image);
+        btn_search_video = (Button) view.findViewById(R.id.btn_search_video);
         btn_add = (Button) view.findViewById(R.id.btn_add);
         btn_cancel = (Button) view.findViewById(R.id.btn_cancel);
 
-        btn_search_image.setOnClickListener(new View.OnClickListener() {
+        btn_search_video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -44,9 +44,9 @@ public class AddPostFragment extends Fragment {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(et_imageLink.getText().toString().equals("") || et_imageLink.getText().toString() == null){
+                if(et_videoLink == null){
                     Toast.makeText(getContext(), "비디오를 첨부해주세요.", Toast.LENGTH_SHORT).show();
-                } else if(et_explain.getText().toString().equals("") || et_explain.getText().toString() == null){
+                } else if(et_explain == null){
                     Toast.makeText(getContext(), "설명을 작성해주세요.", Toast.LENGTH_SHORT).show();
                 } else{
                     //첨부하는 코드
