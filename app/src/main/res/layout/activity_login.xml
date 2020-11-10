@@ -3,15 +3,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    tools:context=".LoginActivity">
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/auth_btn_google"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_gravity="center" />
+        android:layout_height="wrap_content"
+        android:text="Cat Emotion"
+        android:textSize="50dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_weight="2"/>
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_weight="1">
+
+        <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
+            android:id="@+id/auth_btn_email"
+            style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fui_sign_in_with_email"
+            tools:ignore="UnusedIds" />
+
+        <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
+            android:id="@+id/auth_btn_google"
+            style="@style/FirebaseUI.Button.AccountChooser.GoogleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fui_sign_in_with_google"
+            tools:ignore="UnusedIds" />
+
+        <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
+            android:id="@+id/auth_btn_facebook"
+            style="@style/FirebaseUI.Button.AccountChooser.FacebookButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fui_sign_in_with_facebook"
+            tools:ignore="UnusedIds" />
+
+        <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
+            android:id="@+id/auth_btn_github"
+            style="@style/FirebaseUI.Button.AccountChooser.GitHubButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fui_sign_in_with_github"
+            tools:ignore="UnusedIds" />
+
+        <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
+            android:id="@+id/auth_btn_phone"
+            style="@style/FirebaseUI.Button.AccountChooser.PhoneButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fui_sign_in_with_phone"
+            tools:ignore="UnusedIds" />
+
+    </LinearLayout>
+
 </LinearLayout>
