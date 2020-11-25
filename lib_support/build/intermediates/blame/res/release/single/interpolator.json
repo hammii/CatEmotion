@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "/Users/hayeong/Desktop/CatEmotion2/lib_support/build/intermediates/res/merged/release/interpolator/btn_radio_to_on_mtrl_animation_interpolator_0.xml",
+        "source": "/Users/hayeong/.gradle/caches/transforms-2/files-2.1/1825ac6eed6a6de43b4d934473c06548/appcompat-1.1.0/res/interpolator/btn_radio_to_on_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "/Users/hayeong/Desktop/CatEmotion2/lib_support/build/intermediates/res/merged/release/interpolator/btn_checkbox_checked_mtrl_animation_interpolator_1.xml",
+        "source": "/Users/hayeong/.gradle/caches/transforms-2/files-2.1/1825ac6eed6a6de43b4d934473c06548/appcompat-1.1.0/res/interpolator/btn_checkbox_checked_mtrl_animation_interpolator_1.xml"
+    },
+    {
+        "merged": "/Users/hayeong/Desktop/CatEmotion2/lib_support/build/intermediates/res/merged/release/interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml",
+        "source": "/Users/hayeong/.gradle/caches/transforms-2/files-2.1/1825ac6eed6a6de43b4d934473c06548/appcompat-1.1.0/res/interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml"
+    },
+    {
+        "merged": "/Users/hayeong/Desktop/CatEmotion2/lib_support/build/intermediates/res/merged/release/interpolator/btn_radio_to_off_mtrl_animation_interpolator_0.xml",
+        "source": "/Users/hayeong/.gradle/caches/transforms-2/files-2.1/1825ac6eed6a6de43b4d934473c06548/appcompat-1.1.0/res/interpolator/btn_radio_to_off_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "/Users/hayeong/Desktop/CatEmotion2/lib_support/build/intermediates/res/merged/release/interpolator/btn_checkbox_checked_mtrl_animation_interpolator_0.xml",
+        "source": "/Users/hayeong/.gradle/caches/transforms-2/files-2.1/1825ac6eed6a6de43b4d934473c06548/appcompat-1.1.0/res/interpolator/btn_checkbox_checked_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "/Users/hayeong/Desktop/CatEmotion2/lib_support/build/intermediates/res/merged/release/interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_0.xml",
+        "source": "/Users/hayeong/.gradle/caches/transforms-2/files-2.1/1825ac6eed6a6de43b4d934473c06548/appcompat-1.1.0/res/interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "/Users/hayeong/Desktop/CatEmotion2/lib_support/build/intermediates/res/merged/release/interpolator/fast_out_slow_in.xml",
+        "source": "/Users/hayeong/.gradle/caches/transforms-2/files-2.1/1825ac6eed6a6de43b4d934473c06548/appcompat-1.1.0/res/interpolator/fast_out_slow_in.xml"
+    }
+]

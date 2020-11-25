@@ -1,13 +1,11 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
+
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme.ImageClassification" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#B39DDB</item>
-        <item name="colorPrimaryDark">#D1C4E9</item>
-        <item name="colorAccent">@color/colorAccent</item>
-<!--        상단바 제거-->
-<!--        <item name="windowActionBar">false</item>-->
-<!--        <item name="windowNoTitle">true</item>-->
+        <item name="colorPrimary">@color/tfe_color_primary</item>
+        <item name="colorPrimaryDark">@color/tfe_color_primary_dark</item>
+        <item name="colorAccent">@color/tfe_color_accent</item>
     </style>
 
 </resources>

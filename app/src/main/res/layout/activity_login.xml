@@ -1,67 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@drawable/background">
 
-    <TextView
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btn_skip"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cat Emotion"
-        android:textSize="50dp"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:layout_weight="2"/>
+        android:background="#00ff0000"
+        android:text="SKIP >"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
-        android:layout_width="250dp"
+        android:id="@+id/linear_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_weight="1">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
-            android:id="@+id/auth_btn_email"
-            style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="40dp"
+            android:src="@drawable/cat_face" />
+
+<!--                    <EditText-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="이메일"-->
+<!--                        android:inputType="textEmailAddress"-->
+<!--                        android:id="@+id/et_email"/>-->
+
+<!--                    <EditText-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="비밀번호"-->
+<!--                        android:inputType="textPassword"-->
+<!--                        android:id="@+id/et_password"/>-->
+
+<!--                    <Button-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="로그인"-->
+<!--                        android:backgroundTint="@color/primary"-->
+<!--                        />-->
+
+<!--                    <Button-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="회원가입"-->
+<!--                    android:backgroundTint="@color/black"-->
+<!--                        android:layout_marginBottom="20dp"-->
+<!--                        />-->
+
+        <LinearLayout
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="@string/fui_sign_in_with_email"
-            tools:ignore="UnusedIds" />
+            android:orientation="vertical">
 
-        <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
-            android:id="@+id/auth_btn_google"
-            style="@style/FirebaseUI.Button.AccountChooser.GoogleButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fui_sign_in_with_google"
-            tools:ignore="UnusedIds" />
+            <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
+                android:id="@+id/auth_btn_email"
+                style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="이메일로 로그인"
+                tools:ignore="UnusedIds" />
 
-        <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
-            android:id="@+id/auth_btn_facebook"
-            style="@style/FirebaseUI.Button.AccountChooser.FacebookButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fui_sign_in_with_facebook"
-            tools:ignore="UnusedIds" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="-5dp"
+                android:layout_marginBottom="-5dp" />
 
-        <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
-            android:id="@+id/auth_btn_github"
-            style="@style/FirebaseUI.Button.AccountChooser.GitHubButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fui_sign_in_with_github"
-            tools:ignore="UnusedIds" />
+            <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
+                android:id="@+id/auth_btn_google"
+                style="@style/FirebaseUI.Button.AccountChooser.GoogleButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="구글 로그인"
+                tools:ignore="UnusedIds" />
 
-        <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
-            android:id="@+id/auth_btn_phone"
-            style="@style/FirebaseUI.Button.AccountChooser.PhoneButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fui_sign_in_with_phone"
-            tools:ignore="UnusedIds" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="-5dp"
+                android:layout_marginBottom="-5dp" />
 
+            <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
+                android:id="@+id/auth_btn_facebook"
+                style="@style/FirebaseUI.Button.AccountChooser.FacebookButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="페이스북 로그인"
+                tools:ignore="UnusedIds" />
+        </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

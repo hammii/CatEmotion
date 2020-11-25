@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -36,23 +37,30 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="30dp"/>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end">
+
             <Button
                 android:id="@+id/duplicate_confirm_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="중복확인"
                 android:layout_marginRight="5dp"
-                ></Button>
+                android:backgroundTint="@color/primary"
+                tools:ignore="ButtonStyle"
+                />
+
             <Button
                 android:id="@+id/id_ok_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="사용하기"
-                android:layout_marginRight="20dp"></Button>
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/primary"
+                tools:ignore="ButtonStyle" />
         </LinearLayout>
     </LinearLayout>
 
