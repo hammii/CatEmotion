@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/btn_account"
+        android:title="계정 관리"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/btn_app_info"
+        android:title="앱 정보"
+        app:showAsAction="never"/>
+</menu>

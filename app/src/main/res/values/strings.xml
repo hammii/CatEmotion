@@ -1,8 +1,31 @@
 <resources>
-    <string name="app_name">Cat Emotion</string>
-    <string name="title_home">Home</string>
+    <string name="tfe_ic_app_name" translation_description="Image Classification demo app [CHAR_LIMIT=40]">TFL Classify</string>
+    <string name="tfe_ic_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
+    <string name="tfe_ic_gpu_quant_error" translation_description="Error regarding GPU support for Quant models[CHAR_LIMIT=60]">GPU does not yet supported quantized models.</string>
+    <string name="tfe_ic_model" translatable="false">Model:</string>
+    <string name="tfe_ic_device" translatable="false">Device:</string>
+
+    <string name="app_name">CatEmotion</string>
+    <string name="title_camera">Camera</string>
+
     <string name="title_ranking">Ranking</string>
     <string name="title_album">Album</string>
+    <string name="title_community">Community</string>
     <string name="title_settings">Settings</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="facebook_app_id">274713827293453</string>
+    <string name="fb_login_protocol_scheme">fb274713827293453</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="tfe_ic_models" translatable="false">
+        <item>Quantized_EfficientNet</item>
+        <item>Float_EfficientNet</item>
+        <item>Quantized_MobileNet</item>
+        <item>Float_MobileNet</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="tfe_ic_devices" translatable="false">
+        <item>CPU</item>
+        <item>GPU</item>
+        <item>NNAPI</item>
+    </string-array>
 </resources>
