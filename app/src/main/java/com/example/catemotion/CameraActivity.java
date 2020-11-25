@@ -108,15 +108,14 @@ public abstract class CameraActivity extends AppCompatActivity
         // 이미지 분류 결과 텍스트뷰
         recognitionTextView = findViewById(R.id.detected_item);
         recognitionValueTextView = findViewById(R.id.detected_item_value);
-        recognition1TextView = findViewById(R.id.detected_item1);
-        recognition1ValueTextView = findViewById(R.id.detected_item1_value);
-        recognition2TextView = findViewById(R.id.detected_item2);
-        recognition2ValueTextView = findViewById(R.id.detected_item2_value);
+//        recognition1TextView = findViewById(R.id.detected_item1);
+//        recognition1ValueTextView = findViewById(R.id.detected_item1_value);
+//        recognition2TextView = findViewById(R.id.detected_item2);
+//        recognition2ValueTextView = findViewById(R.id.detected_item2_value);
 
         closeButton = findViewById(R.id.btn_close);
         shutterButton = findViewById(R.id.btn_shutter);
         captureLayout = findViewById(R.id.container);
-
 
         // 닫기 버튼 리스너
         closeButton.setOnClickListener(new View.OnClickListener() {
