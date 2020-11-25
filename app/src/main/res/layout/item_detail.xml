@@ -29,8 +29,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:scaleType="fitXY"
+        android:layout_height="wrap_content"
         android:id="@+id/iv_postImage"/>
 
     <LinearLayout
@@ -85,9 +84,10 @@
         android:layout_marginLeft="8dp"
         tools:text="이미지 내용"
         android:id="@+id/tv_postContents"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#111111"/>
+
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:background="#111111"/>-->
 
 </LinearLayout>

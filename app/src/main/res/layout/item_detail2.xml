@@ -64,10 +64,10 @@
             android:text="0" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#111111"
-        app:layout_constraintBottom_toBottomOf="@id/tv_postContents" />
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:background="#111111"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/tv_postContents" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

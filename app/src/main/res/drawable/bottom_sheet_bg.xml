@@ -5,5 +5,5 @@
         android:topLeftRadius="@dimen/tfe_bottom_sheet_corner_radius"
         android:topRightRadius="@dimen/tfe_bottom_sheet_corner_radius" />
     <padding android:top="@dimen/tfe_bottom_sheet_top_padding" />
-    <solid android:color="@android:color/white" />
+    <solid android:color="@android:color/black" />
 </shape>

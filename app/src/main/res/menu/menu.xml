@@ -3,12 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/btn_account"
-        android:title="계정 관리"
-        app:showAsAction="never"/>
+        android:id="@+id/btn_add"
+        android:title="추가"
+        android:icon="@drawable/ic_baseline_add"
+        app:showAsAction="always"
+        />
 
-    <item
-        android:id="@+id/btn_app_info"
-        android:title="앱 정보"
-        app:showAsAction="never"/>
 </menu>

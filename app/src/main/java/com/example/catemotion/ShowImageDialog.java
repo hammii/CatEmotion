@@ -53,7 +53,8 @@ public class ShowImageDialog extends Dialog {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                context.getContentResolver().delete(imageUri, null, null);
+                dismiss();
             }
         });
 

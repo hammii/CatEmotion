@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="추가하기"
-        android:layout_gravity="right"
-        android:id="@+id/btn_add_post"/>
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="추가하기"-->
+<!--        android:layout_gravity="right"-->
+<!--        android:id="@+id/btn_add_post"/>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

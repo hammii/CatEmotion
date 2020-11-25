@@ -2,19 +2,13 @@ package com.example.catemotion;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -22,6 +16,10 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SettingsFragment extends Fragment {
     private Context mContext;
     private Activity mActivity;
+
+    public static Fragment newInstance() {
+        return new SettingsFragment();
+    }
 
     public void onAttach(Context context) {
         mContext = context;

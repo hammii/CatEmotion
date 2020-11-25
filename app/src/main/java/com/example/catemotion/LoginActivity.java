@@ -62,10 +62,10 @@ public class LoginActivity extends AppCompatActivity {
         // 파이어베이스 인증 객체 선언
         firebaseAuth = FirebaseAuth.getInstance();
 
-        if(firebaseAuth.getCurrentUser() != null){
-            finish();
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-        }
+//        if(firebaseAuth.getCurrentUser() != null){
+//            finish();
+//            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+//        }
 
         // 파이어베이스 DB 객체 선언
         firebaseDatabase = FirebaseDatabase.getInstance();
