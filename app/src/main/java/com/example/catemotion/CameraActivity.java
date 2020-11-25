@@ -18,10 +18,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Trace;
-
-import androidx.annotation.UiThread;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.util.Size;
 import android.view.Surface;
 import android.view.View;
@@ -33,8 +29,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.nio.ByteBuffer;
-import java.util.List;
+import androidx.annotation.UiThread;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.catemotion.customview.AutoFitTextureView;
 import com.example.catemotion.env.ImageUtils;
@@ -42,6 +38,9 @@ import com.example.catemotion.env.Logger;
 import com.example.catemotion.tflite.Classifier.Device;
 import com.example.catemotion.tflite.Classifier.Model;
 import com.example.catemotion.tflite.Classifier.Recognition;
+
+import java.nio.ByteBuffer;
+import java.util.List;
 
 public abstract class CameraActivity extends AppCompatActivity
         implements OnImageAvailableListener,

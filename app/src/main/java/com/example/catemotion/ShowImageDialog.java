@@ -3,11 +3,12 @@ package com.example.catemotion;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -36,6 +37,25 @@ public class ShowImageDialog extends Dialog {
         setContentView(binding.getRoot());
         binding.imageView.setImageURI(this.imageUri);
         Log.e("Uri", this.imageUri.toString());
+
+        Button cancelButton = (Button) findViewById(R.id.btn_cancel);
+        Button deleteButton = (Button) findViewById(R.id.btn_delete);
+
+        // 취소 버튼
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+
+        // 삭제 버튼
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 //        binding.videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 //            @Override
