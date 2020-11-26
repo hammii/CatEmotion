@@ -836,6 +836,8 @@ public class CameraConnectionFragment extends Fragment {
                                                    @NonNull CaptureRequest request, @NonNull TotalCaptureResult result) {
                         super.onCaptureCompleted(session, request, result);
 //                        Toast.makeText(getActivity(), "saved:" + file, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "사진이 저장되었습니다.", Toast.LENGTH_LONG).show();
+
                         // 이미지가 성공적으로 캡처되면 다시 미리보기를 수행한다.
 //                startPreview();
                         createCameraPreviewSession();
