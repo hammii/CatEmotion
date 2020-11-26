@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="40dp"
         >
 
         <EditText
@@ -36,13 +36,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="비밀번호"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:layout_marginBottom="10dp"/>
 
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/primary"
+            android:background="@drawable/custom_button"
+            android:textColor="@color/white"
             android:text="로그인" />
 
     </LinearLayout>
@@ -61,8 +63,9 @@
         <Button
             android:id="@+id/btn_signup"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
+            android:layout_height="40dp"
+            android:background="@drawable/round_button"
+            android:textColor="@color/white"
             android:text="회원가입" />
     </LinearLayout>
 </LinearLayout>

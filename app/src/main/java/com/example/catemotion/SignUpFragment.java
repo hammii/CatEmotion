@@ -75,7 +75,6 @@ public class SignUpFragment extends Fragment {
         et_nickname = (EditText)view.findViewById(R.id.et_nickname);
         btn_register = (Button)view.findViewById(R.id.btn_register);
         iv_userImage = (ImageView)view.findViewById(R.id.iv_userImage);
-        btn_upload_userImage = (Button)view.findViewById(R.id.btn_upload_userImage);
 
         arrayList = new ArrayList<>();
         userList = new UserList();

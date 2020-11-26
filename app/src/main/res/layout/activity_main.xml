@@ -1,59 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="60dp"
-            android:orientation="vertical"
-            android:id="@+id/frame_layout">
-        </FrameLayout>
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical" />
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_weight="12">-->
-
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:text="홈"-->
-<!--                android:id="@+id/btn_home"-->
-<!--                android:layout_weight="1"/>-->
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:text="앨범"-->
-<!--                android:id="@+id/btn_album"-->
-<!--                android:layout_weight="1"/>-->
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:text="랭킹"-->
-<!--                android:id="@+id/btn_ranking"-->
-<!--                android:layout_weight="1"/>-->
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:text="커뮤니티"-->
-<!--                android:id="@+id/btn_community"-->
-<!--                android:layout_weight="1"/>-->
-<!--        </LinearLayout>-->
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="unlabeled"/>
+        app:layout_constraintTop_toBottomOf="@+id/frame_layout">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_community"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/ic_outline_home_24"
+                android:backgroundTint="@color/black"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_ranking"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/ic_outline_insert_chart_24"
+                android:backgroundTint="@color/black"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_camera"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/ic_outline_photo_camera_24"
+                android:backgroundTint="@color/black"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_album"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/ic_outline_photo_library_24"
+                android:backgroundTint="@color/black"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_settings"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/ic_outline_settings_24"
+                android:backgroundTint="@color/black"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--        android:id="@+id/nav_view"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="?android:attr/windowBackground"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--        app:layout_constraintRight_toRightOf="parent"-->
+    <!--        app:menu="@menu/bottom_nav_menu"-->
+    <!--        app:labelVisibilityMode="unlabeled"/>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

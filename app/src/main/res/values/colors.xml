@@ -14,7 +14,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="primary">#AB40CC</color>
-    <color name="colorPrimaryDark">#7B1FA2</color>
+    <color name="primary">#A55FD7</color>
     <color name="colorPrimary">#BDBDBD</color>
 </resources>

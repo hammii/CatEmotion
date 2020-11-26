@@ -3,16 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/navigation_community"
-        android:icon="@drawable/ic_baseline_chat_24"
-        android:title="@string/title_community" />
-
-    <item
-        android:id="@+id/navigation_ranking"
-        android:icon="@drawable/ic_baseline_bar_chart_24"
-        android:title="@string/title_ranking" />
-
-    <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_baseline_photo_camera_24"
         android:title="@string/title_camera" />
