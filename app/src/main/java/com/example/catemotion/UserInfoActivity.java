@@ -136,8 +136,8 @@ public class UserInfoActivity extends AppCompatActivity {
 
         if (user != null) {
             UserList userDTO = new UserList(
-                    extraID,
                     user.getEmail(),
+                    extraID,
                     null
             );
 

@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="20dp">
+    android:padding="20dp">
     
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         
@@ -22,6 +22,8 @@
                 android:layout_height="100dp"
                 android:id="@+id/iv_userImage"
                 tools:src="@drawable/cat_face"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
                 />
             <Button
                 android:id="@+id/btn_search_image"
@@ -43,22 +45,22 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_marginLeft="8dp">
+            android:layout_marginTop="20dp"
+            android:padding="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="이메일: "/>
+                    android:text="이메일: " />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,7 +72,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -83,6 +86,7 @@
                     tools:text="null"
                     android:id="@+id/tv_id"/>
             </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

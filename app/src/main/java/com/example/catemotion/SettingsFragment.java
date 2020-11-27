@@ -46,27 +46,13 @@ public class SettingsFragment extends Fragment {
         TextView tv_app_info = view.findViewById(R.id.tv_app_info);
 
         // 계정 관리
-        tv_user.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                ((MainActivity) getActivity()).replaceFragment(ProfileFragment.newInstance());
-                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
-                if(firebaseAuth.getCurrentUser() != null){
-                    ((MainActivity) getActivity()).replaceFragment(ProfileFragment.newInstance());
-                } else {
-                    ((MainActivity) getActivity()).replaceFragment(LoginFragment.newInstance());
-                }
-
-            }
-        });
-
-//        tv_app_info.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ((MainActivity) getActivity()).replaceFragment(AppInfoFragment.newInstance());
-//            }
-//        });
+        if (firebaseAuth.getCurrentUser() != null) {
+            ((MainActivity) getActivity()).replaceFragment(ProfileFragment.newInstance());
+        } else {
+            ((MainActivity) getActivity()).replaceFragment(LoginFragment.newInstance());
+        }
 
         return view;
     }
@@ -81,7 +67,6 @@ public class SettingsFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         // 앱 정보
-//        ((MainActivity) getActivity()).replaceFragment(AppInfoFragment.newInstance());
         startActivity(new Intent(mActivity, AppInfoActivity.class));
 
         return super.onOptionsItemSelected(item);

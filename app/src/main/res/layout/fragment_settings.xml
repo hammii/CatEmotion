@@ -11,8 +11,10 @@
         android:id="@+id/tv_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
         android:text="내 정보"
-        android:textSize="30sp"/>
+        android:layout_gravity="center"
+        android:textSize="20sp"/>
 
     <View
         android:layout_width="match_parent"
@@ -24,8 +26,9 @@
         android:id="@+id/tv_app_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
         android:text="앱 정보"
-        android:textSize="30sp"
+        android:textSize="20sp"
         />
 
     <View

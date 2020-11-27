@@ -1,8 +1,13 @@
 package com.example.catemotion;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,8 +23,19 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginFragment extends Fragment {
+    private Context mContext;
+    private Activity mActivity;
+
     public static LoginFragment newInstance(){
         return new LoginFragment();
+    }
+
+    public void onAttach(Context context) {
+        mContext = context;
+        if (context instanceof Activity) {
+            mActivity = (Activity) context;
+        }
+        super.onAttach(context);
     }
 
     private FirebaseAuth firebaseAuth;
@@ -35,6 +51,7 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         view = inflater.inflate(R.layout.fragment_login, null);
+        setHasOptionsMenu(true);
 
         et_email = (EditText)view.findViewById(R.id.et_email);
         et_password = (EditText)view.findViewById(R.id.et_password);
@@ -85,4 +102,18 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.inform, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // 앱 정보
+        startActivity(new Intent(mActivity, AppInfoActivity.class));
+
+        return super.onOptionsItemSelected(item);
+    }
 }

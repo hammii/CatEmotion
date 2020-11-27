@@ -1,12 +1,9 @@
 package com.example.catemotion;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,11 +11,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,13 +23,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
+
+//회원가입 관련 코드 참고 사이트 : http://blog.naver.com/PostView.nhn?blogId=cosmosjs&logNo=220987385077&categoryNo=0&parentCategoryNo=56&viewDate=&currentPage=1&postListTopCurrentPage=1&from=section
 
 public class SignUpActivity extends AppCompatActivity {
     private static final Pattern PASSWORD_PATTERN = Pattern.compile("^[a-zA-Z0-9!@.#$%^&*?_~]{4,16}$");
@@ -62,37 +57,24 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        // 액션바 숨기기
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);//기본 제목을 없애줍니다.
+        actionBar.setDisplayHomeAsUpEnabled(true);    // 뒤로가기
 
         et_email = (EditText)findViewById(R.id.et_email);
         et_password = (EditText)findViewById(R.id.et_password);
         et_password_check = (EditText)findViewById(R.id.et_password_check);
         et_nickname = (EditText)findViewById(R.id.et_nickname);
         btn_register = (Button)findViewById(R.id.btn_register);
-//        iv_userImage = (ImageView)findViewById(R.id.iv_userImage);
-//        btn_upload_userImage = (Button)findViewById(R.id.btn_upload_userImage);
 
         arrayList = new ArrayList<>();
         userList = new UserList();
         btn_uploadImage_pressed = false;
 
         firebaseAuth = FirebaseAuth.getInstance();
-
-        // 사진 수정하기 버튼
-//        btn_upload_userImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent();
-//                intent.setType("image/*");
-//                intent.setAction(Intent.ACTION_GET_CONTENT);
-//                startActivityForResult(Intent.createChooser(intent, "이미지를 선택하세요."), 0);
-//
-//                btn_uploadImage_pressed = true;
-//            }
-//        });
 
         // 등록하기 버튼
         btn_register.setOnClickListener(new View.OnClickListener() {
@@ -166,33 +148,6 @@ public class SignUpActivity extends AppCompatActivity {
                                         }
                                     });
 
-                            //Fragment간의 데이터 전달
-//                            Bundle result = new Bundle();
-                            //result.putString("bundleKey", "123");
-//                            result.putString("email", email);
-//                            result.putString("id", nickname);
-//                            result.putString("filePath", filePath.toString());
-//                            getParentFragmentManager().setFragmentResult("requestKey", result);
-
-//                            if(btn_uploadImage_pressed == true) {
-//                                uploadUserImage();
-//
-//                                profileUpdates = new UserProfileChangeRequest
-//                                        .Builder()
-//                                        .setPhotoUri(filePath)
-//                                        .build();
-//                                user.updateProfile(profileUpdates)
-//                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                            @Override
-//                                            public void onComplete(@NonNull Task<Void> task) {
-//                                                if(task.isSuccessful()){
-//                                                    Log.d(TAG, "User profile updated.");
-//                                                }
-//                                            }
-//                                        });
-//
-//                            }
-
                             Toast.makeText(getApplicationContext(), " 회원가입 성공!", Toast.LENGTH_SHORT).show();
                             finish();
                         } else {
@@ -202,20 +157,13 @@ public class SignUpActivity extends AppCompatActivity {
                 });
     }
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data){
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if(requestCode == 0 && resultCode == Activity.RESULT_OK){
-//            filePath = data.getData();
-//            Log.d(TAG, "uri: " + String.valueOf(filePath));
-//            try{
-//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getApplication().getContentResolver(), filePath);
-//                iv_userImage.setImageBitmap(bitmap);
-//            } catch (IOException e){
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
