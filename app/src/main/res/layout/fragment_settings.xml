@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SettingsFragment">
+    tools:context=".SettingsFragment"
+    android:layout_marginHorizontal="10dp">
 
     <TextView
         android:id="@+id/tv_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="계정관리"
+        android:text="내 정보"
         android:textSize="30sp"/>
 
     <View

@@ -474,7 +474,7 @@ public abstract class CameraActivity extends AppCompatActivity
             Recognition recognition = results.get(0);
             if (recognition != null) {
                 if (recognition.getTitle() != null)
-                    recognitionTextView.setText(recognition.getTitle());
+                    recognitionTextView.setText(recognition.getTitle().substring(2));
                 if (recognition.getConfidence() != null)
                     recognitionValueTextView.setText(
                             String.format("%.2f", (100 * recognition.getConfidence())) + "%");

@@ -43,11 +43,6 @@ public class UserInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
 
-        // 액션바 숨기기
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 

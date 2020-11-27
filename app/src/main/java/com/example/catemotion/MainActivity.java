@@ -4,15 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 public class MainActivity extends AppCompatActivity {
-
     private Button btn_camera;
     private Button btn_album;
     private Button btn_ranking;
@@ -32,8 +34,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 타이틀바 그림자 없애기
-        getSupportActionBar().setElevation(0);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);//기본 제목을 없애줍니다.
+//        actionBar.setDisplayHomeAsUpEnabled(true);    // 뒤로가기
+        TextView toolbarTitle = findViewById(R.id.toolbar_title);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.frame_layout, communityFragment).commit();
@@ -56,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         btn_album.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                toolbarTitle.setText("Album");
+
                 // 채워진 이미지로 변경
                 btn_album.setBackground(getDrawable(R.drawable.ic_baseline_photo_library_24));
 
@@ -71,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
         btn_ranking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                toolbarTitle.setText("Ranking");
+
                 // 채워진 이미지로 변경
                 btn_ranking.setBackground(getDrawable(R.drawable.ic_baseline_insert_chart_24));
 
@@ -86,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
         btn_community.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                toolbarTitle.setText("Cat Emotion");
+
                 // 채워진 이미지로 변경
                 btn_community.setBackground(getDrawable(R.drawable.ic_baseline_home_24));
 
@@ -101,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
         btn_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                toolbarTitle.setText("Settings");
+
                 // 채워진 이미지로 변경
                 btn_settings.setBackground(getDrawable(R.drawable.ic_baseline_settings_24));
 
@@ -120,26 +135,4 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment).commit();
     }
-
-//    //상단바 메뉴 관련 코드
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu){
-//        getMenuInflater().inflate(R.menu.menu, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item){
-//
-//        switch (item.getItemId()){
-//            case R.id.btn_account:
-//                replaceFragment(LoginFragment.newInstance());
-//                return true;
-//            case R.id.btn_app_info:
-//                replaceFragment(AppInfoFragment.newInstance());
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
 }

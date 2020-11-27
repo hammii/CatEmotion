@@ -5,7 +5,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <ImageView
             android:id="@+id/imageView"
@@ -24,24 +25,24 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView">
 
             <Button
-                android:id="@+id/btn_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="취소"
-                android:background="@drawable/round_button"
-                android:textColor="@color/white"
-                android:layout_marginRight="10dp"
-                />
-
-            <Button
                 android:id="@+id/btn_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="삭제"
-                android:background="@drawable/custom_button"
+                android:layout_margin="10dp"
+                android:background="@drawable/round_button"
                 android:textColor="@color/white"
                 />
 
+            <Button
+                android:id="@+id/btn_close"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="닫기"
+                android:layout_margin="10dp"
+                android:background="@drawable/round_button"
+                android:textColor="@color/white"
+                />
 
         </LinearLayout>
 

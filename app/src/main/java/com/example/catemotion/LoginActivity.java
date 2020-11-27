@@ -54,11 +54,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // 액션바 숨기기
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-
         // 파이어베이스 인증 객체 선언
         firebaseAuth = FirebaseAuth.getInstance();
 

@@ -38,11 +38,11 @@ public class ShowImageDialog extends Dialog {
         binding.imageView.setImageURI(this.imageUri);
         Log.e("Uri", this.imageUri.toString());
 
-        Button cancelButton = (Button) findViewById(R.id.btn_cancel);
+        Button closeButton = (Button) findViewById(R.id.btn_close);
         Button deleteButton = (Button) findViewById(R.id.btn_delete);
 
         // 취소 버튼
-        cancelButton.setOnClickListener(new View.OnClickListener() {
+        closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
@@ -53,8 +53,8 @@ public class ShowImageDialog extends Dialog {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.getContentResolver().delete(imageUri, null, null);
                 dismiss();
+                context.getContentResolver().delete(imageUri, null, null);
             }
         });
 

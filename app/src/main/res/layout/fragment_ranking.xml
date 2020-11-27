@@ -11,8 +11,9 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#111111"/>
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray"
+         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

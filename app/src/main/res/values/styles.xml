@@ -1,13 +1,14 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
 <!-- Base application theme. -->
-    <style name="AppTheme.ImageClassification" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme.ImageClassification" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/tfe_color_accent</item>
         <item name="toolbarStyle">@style/CustomToolBarStyle</item>
         <item name="android:windowBackground">@color/white</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="CustomToolBarStyle" parent="@style/Widget.AppCompat.Toolbar">

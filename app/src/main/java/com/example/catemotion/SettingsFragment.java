@@ -2,12 +2,17 @@ package com.example.catemotion;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +37,7 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, null);
+        setHasOptionsMenu(true);
 
         // 상단바 텍스트 변경
         mActivity.setTitle("Settings");
@@ -55,14 +61,29 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        // 앱 정보
-        tv_app_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity) getActivity()).replaceFragment(AppInfoFragment.newInstance());
-            }
-        });
+//        tv_app_info.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ((MainActivity) getActivity()).replaceFragment(AppInfoFragment.newInstance());
+//            }
+//        });
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.inform, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // 앱 정보
+//        ((MainActivity) getActivity()).replaceFragment(AppInfoFragment.newInstance());
+        startActivity(new Intent(mActivity, AppInfoActivity.class));
+
+        return super.onOptionsItemSelected(item);
     }
 }

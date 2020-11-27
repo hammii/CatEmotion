@@ -2,6 +2,7 @@ package com.example.catemotion;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,12 +37,10 @@ public class CommunityFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
 
-    //    private RecyclerView.LayoutManager layoutManager;
     private LinearLayoutManager layoutManager; //수정
 
     private ArrayList<Post> arrayList;
     private FirebaseDatabase database;
-    //    private DatabaseReference databaseReference;
     private Query databaseReference;
 
     private View view;
@@ -64,23 +63,6 @@ public class CommunityFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_community, container, false);
         setHasOptionsMenu(true);
 
-        // 상단바 텍스트 변경
-        mActivity.setTitle("Cat Emotion");
-
-//        btn_add_post = (Button) view.findViewById(R.id.btn_add_post);
-//        btn_add_post.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                firebaseAuth = FirebaseAuth.getInstance();
-//
-//                if (firebaseAuth.getCurrentUser() == null) {
-//                    Toast.makeText(getContext(), "로그인 후 이용해주세요.", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    ((MainActivity) getActivity()).replaceFragment(AddPostFragment.newInstance());
-//                }
-//            }
-//        });
-
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
@@ -94,7 +76,6 @@ public class CommunityFragment extends Fragment {
 
         database = FirebaseDatabase.getInstance();
 
-//        databaseReference = database.getReference("Post");
         databaseReference = database.getReference("Post").orderByChild("uploadDate");
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -134,7 +115,7 @@ public class CommunityFragment extends Fragment {
             if (firebaseAuth.getCurrentUser() == null) {
                 Toast.makeText(getContext(), "로그인 후 이용해주세요.", Toast.LENGTH_SHORT).show();
             } else {
-                ((MainActivity) getActivity()).replaceFragment(AddPostFragment.newInstance());
+                startActivity(new Intent(mActivity, AddPostActivity.class));
             }
             return true;
         }
