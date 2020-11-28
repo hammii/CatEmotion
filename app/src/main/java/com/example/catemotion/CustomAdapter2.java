@@ -73,6 +73,7 @@ public class CustomAdapter2 extends RecyclerView.Adapter<CustomAdapter2.CustomVi
 //                .load(arrayList.get(position).getPostImage())
 //                .into(holder.iv_postImage);
 
+        holder.tv_ranking.setText(String.valueOf(getItemCount()-position));
         holder.tv_nickName.setText(arrayList.get(position).getUserName());
         holder.tv_postContents.setText(arrayList.get(position).getPostContents());
         holder.tv_likeCount.setText(String.valueOf(arrayList.get(position).getLikeCount()));
@@ -122,7 +123,7 @@ public class CustomAdapter2 extends RecyclerView.Adapter<CustomAdapter2.CustomVi
         TextView tv_postContents;
         TextView tv_likeCount;
         ImageView iv_likeImage;
-
+        TextView tv_ranking;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -132,6 +133,7 @@ public class CustomAdapter2 extends RecyclerView.Adapter<CustomAdapter2.CustomVi
             this.tv_postContents = itemView.findViewById(R.id.tv_postContents);
             this.tv_likeCount = itemView.findViewById(R.id.tv_likeCount);
             this.iv_likeImage = itemView.findViewById(R.id.iv_likeImage);
+            this.tv_ranking = itemView.findViewById(R.id.tv_ranking);
         }
     }
 

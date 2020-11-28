@@ -21,18 +21,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             tools:text="User Name"
             android:id="@+id/tv_userName"/>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="삭제"
+            android:text="삭제하기"
             android:background="@color/fui_transparent"
             android:id="@+id/btn_delete"/>
 
@@ -108,5 +104,12 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="1dp"-->
 <!--        android:background="#111111"/>-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray"
+        android:layout_marginHorizontal="8dp"
+        />
 
 </LinearLayout>
