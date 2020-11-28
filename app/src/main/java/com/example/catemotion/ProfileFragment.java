@@ -212,6 +212,16 @@ public class ProfileFragment extends Fragment {
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
+                                        //storage에서 사진 삭제하기
+                                        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+                                        StorageReference rootRef = firebaseStorage.getReference();
+                                        StorageReference categoryRef = rootRef.child("UserImage");
+                                        StorageReference postRef = categoryRef.child(filename + ".png");
+
+                                        if(postRef != null)
+                                            postRef.delete();
+
+                                        //알리기
                                         Toast.makeText(getContext(), "회원탈퇴 되었습니다.", Toast.LENGTH_SHORT).show();
                                         ((MainActivity) getActivity()).replaceFragment(LoginFragment.newInstance());
                                     }

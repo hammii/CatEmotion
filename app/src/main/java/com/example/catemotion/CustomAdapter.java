@@ -8,14 +8,18 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -34,6 +38,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     String count;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref;
+    private FirebaseAuth firebaseAuth;
 
     public CustomAdapter(ArrayList<Post> arrayList, Context context){
         this.arrayList = arrayList;
@@ -106,6 +111,42 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 //                .load(arrayList.get(position).getPostImage())
 //                .into(holder.iv_postImage);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        if(firebaseAuth.getCurrentUser() == null){
+            holder.btn_delete.setVisibility(View.INVISIBLE);
+        } else if(firebaseAuth.getCurrentUser().getDisplayName().equals(arrayList.get(position).getUserName())){
+            holder.btn_delete.setVisibility(View.VISIBLE);
+
+            holder.btn_delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //realtime database에서 정보 삭제하기
+                    String filename = arrayList.get(position).getUserName() + "_"
+                            + DateToMill(arrayList.get(position).getUploadDate());
+                    ref = database.getReference("Post").child(filename);
+
+                    ref.removeValue();
+
+                    //크기조정하는 코드도 있었으면 좋겠음
+                    holder.linearLayout.setVisibility(View.INVISIBLE);
+
+                    //storage에서 사진 삭제하기
+                    FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+                    StorageReference rootRef = firebaseStorage.getReference();
+                    StorageReference categoryRef = rootRef.child("PostImage");
+                    StorageReference postRef = categoryRef.child(filename);
+
+                    postRef.delete();
+
+                    //알리기
+                    Toast.makeText(context, "삭제되었습니다!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            holder.btn_delete.setVisibility(View.INVISIBLE);
+        }
+
         holder.tv_userName.setText(arrayList.get(position).getUserName());
         holder.tv_likeCount.setText(String.valueOf(arrayList.get(position).getLikeCount()));
         holder.tv_postContents.setText(arrayList.get(position).getPostContents());
@@ -158,6 +199,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         TextView tv_likeCount;
         TextView tv_postContents;
         TextView tv_uploadDate;
+        Button btn_delete;
+        LinearLayout linearLayout;
 
         public CustomViewHolder(@NonNull View itemView){
             super(itemView);
@@ -169,6 +212,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
             this.tv_postContents = itemView.findViewById(R.id.tv_postContents);
             this.tv_uploadDate = itemView.findViewById(R.id.tv_upload_date);
             this.iv_likeImage = itemView.findViewById(R.id.iv_likeImage);
+            this.btn_delete = itemView.findViewById(R.id.btn_delete);
+            this.linearLayout = itemView.findViewById(R.id.linearLayout);
 
         }
     }
