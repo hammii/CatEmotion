@@ -13,6 +13,16 @@
         android:orientation="horizontal"
         >
 
+        <TextView
+            android:id="@+id/tv_ranking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="순위"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/primary"
+            />
+
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
@@ -39,7 +49,8 @@
 
         <TextView
             android:id="@+id/tv_postContents"
-            android:layout_width="214dp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
