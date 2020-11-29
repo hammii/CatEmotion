@@ -62,7 +62,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:id="@+id/btn_overlap"
+                android:id="@+id/btn_duplicate"
                 android:text="중복확인"
                 android:background="@color/fui_transparent"
                 android:textColor="@color/primary"/>

@@ -30,7 +30,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 
-    public ArrayList<String> userIdList = new ArrayList<String>();
+    public ArrayList<String> userIdList = new ArrayList<>();
 
     private EditText userID;
     private Button duplicate_confirm_button;
@@ -141,7 +141,7 @@ public class UserInfoActivity extends AppCompatActivity {
                     null
             );
 
-            databaseReference.child(user.getUid()).setValue(userDTO);
+            databaseReference.child(extraID).setValue(userDTO);
             startActivity(new Intent(UserInfoActivity.this, MainActivity.class));
 
             Toast.makeText(getApplicationContext(), "로그인 성공 ♡", Toast.LENGTH_SHORT).show();

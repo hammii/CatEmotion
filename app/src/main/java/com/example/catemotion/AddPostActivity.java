@@ -184,6 +184,7 @@ public class AddPostActivity extends AppCompatActivity {
 
                             idRef.updateChildren(postlistUpdates);
 
+                            setResult(RESULT_OK);
                             finish();
                         }
                     })

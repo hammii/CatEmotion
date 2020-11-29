@@ -129,7 +129,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
                     ref.removeValue();
 
                     //크기조정하는 코드도 있었으면 좋겠음
-                    holder.linearLayout.setVisibility(View.INVISIBLE);
+//                    holder.linearLayout.setVisibility(View.INVISIBLE);
 
                     //storage에서 사진 삭제하기
                     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
@@ -141,6 +141,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
                     //알리기
                     Toast.makeText(context, "삭제되었습니다!", Toast.LENGTH_SHORT).show();
+
+                    
+                    notifyDataSetChanged();
                 }
             });
         } else {

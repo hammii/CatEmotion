@@ -57,7 +57,9 @@ public class EmailLoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {  // 로그인 성공
-                                        startActivity(new Intent(EmailLoginActivity.this, MainActivity.class));
+                                        Intent intent = new Intent(EmailLoginActivity.this, MainActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(intent);
                                     } else {
                                         Toast.makeText(getApplicationContext(), "로그인 실패: 아이디나 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
                                     }

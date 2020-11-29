@@ -118,7 +118,7 @@ public class ProfileFragment extends Fragment {
             userRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    UserList getUser = dataSnapshot.child(uid).getValue(UserList.class);
+                    UserList getUser = dataSnapshot.child(user.getDisplayName()).getValue(UserList.class);
 
                     assert getUser != null;
                     nickname.add(getUser.getNickName());

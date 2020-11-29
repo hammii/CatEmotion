@@ -1,6 +1,5 @@
 package com.example.catemotion;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -21,8 +20,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -33,6 +35,9 @@ public class SignUpActivity extends AppCompatActivity {
     private static final Pattern PASSWORD_PATTERN = Pattern.compile("^[a-zA-Z0-9!@.#$%^&*?_~]{4,16}$");
 
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
+    public Boolean duplicateComplete = false;
+    public ArrayList<String> userIdList = new ArrayList<String>();
 
     private ImageView iv_userImage;
     private EditText et_email;
@@ -40,12 +45,11 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText et_password_check;
     private EditText et_nickname;
     private Button btn_register;
-    private Button btn_upload_userImage;
+    private Button btn_duplicate;
 
     private ArrayList<UserList> arrayList;
     private UserList userList;
     private String TAG = "SignUpFragment";
-    private Uri filePath;
     private boolean btn_uploadImage_pressed;
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -64,11 +68,12 @@ public class SignUpActivity extends AppCompatActivity {
         actionBar.setDisplayShowTitleEnabled(false);//기본 제목을 없애줍니다.
         actionBar.setDisplayHomeAsUpEnabled(true);    // 뒤로가기
 
-        et_email = (EditText)findViewById(R.id.et_email);
-        et_password = (EditText)findViewById(R.id.et_password);
-        et_password_check = (EditText)findViewById(R.id.et_password_check);
-        et_nickname = (EditText)findViewById(R.id.et_nickname);
-        btn_register = (Button)findViewById(R.id.btn_register);
+        et_email = (EditText) findViewById(R.id.et_email);
+        et_password = (EditText) findViewById(R.id.et_password);
+        et_password_check = (EditText) findViewById(R.id.et_password_check);
+        et_nickname = (EditText) findViewById(R.id.et_nickname);
+        btn_register = (Button) findViewById(R.id.btn_register);
+        btn_duplicate = (Button) findViewById(R.id.btn_duplicate);
 
         arrayList = new ArrayList<>();
         userList = new UserList();
@@ -84,29 +89,80 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+        // 중복확인 버튼
+        btn_duplicate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isUsableID(et_nickname.toString());
+            }
+        });
     }
 
-    private void registerUser(){
+    private void isUsableID(final String inputID) {
+        databaseReference = FirebaseDatabase.getInstance().getReference("UserList");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // 부모가 User 인데 부모 그대로 가져오면 User 각각의 데이터 이니까 자식으로 가져와서 담아줌
+                if (dataSnapshot.hasChildren()) {   //DB에 User가 있는 경우
+                    //DB에 있는 정보 가져오기
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                        UserList user = snapshot.getValue(UserList.class);
+                        userIdList.add(snapshot.getKey());
+
+//                        assert user != null;
+//                        userIdList.add(user.getNickName());
+                    }
+
+                    for (int i = 0; i < userIdList.size(); i++) {
+                        if (userIdList.get(i).equals(inputID)) {
+                            userIdList.clear();
+                            Toast.makeText(getApplicationContext(), "이미 사용중인 ID입니다. 다른 ID를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                            break;
+                        } else {
+                            userIdList.clear();
+                            Toast.makeText(getApplicationContext(), "사용 가능한 ID입니다.", Toast.LENGTH_SHORT).show();
+                            duplicateComplete = true;
+                            break;
+                        }
+                    }
+                } else {
+                    userIdList.clear();
+                    Toast.makeText(getApplicationContext(), "사용 가능한 ID입니다.", Toast.LENGTH_SHORT).show();
+                    duplicateComplete = true;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("UserInfoActivity", "loadPost:onCancelled", error.toException());
+            }
+        });
+    }
+
+    private void registerUser() {
         String email = et_email.getText().toString().trim();
         String password = et_password.getText().toString().trim();
         String password_check = et_password_check.getText().toString().trim();
         String nickname = et_nickname.getText().toString().trim();
 
-        if(email.equals("")){
+        if (email.equals("")) {
             Toast.makeText(getApplicationContext(), "이메일을 입력해주세요.", Toast.LENGTH_SHORT).show();
             return;
-        } else if(password.equals("")){
+        } else if (password.equals("")) {
             Toast.makeText(getApplicationContext(), "비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
             return;
-        } else if(password_check.equals("")){
+        } else if (password_check.equals("")) {
             Toast.makeText(getApplicationContext(), "비밀번호 확인을 입력해주세요.", Toast.LENGTH_SHORT).show();
             return;
-        } else if(!password.equals(password_check)){
+        } else if (!password.equals(password_check)) {
             Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
             return;
-        } else if(nickname.equals("")){
+        } else if (nickname.equals("")) {
             Toast.makeText(getApplicationContext(), "닉네임을 입력해주세요.", Toast.LENGTH_SHORT).show();
-            //닉네임 중복 테스트 코드 필요
+            return;
+        } else if (!duplicateComplete) {
+            Toast.makeText(getApplicationContext(), "중복확인을 해주세요.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -115,7 +171,7 @@ public class SignUpActivity extends AppCompatActivity {
                 .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             ref = database.getReference();
                             DatabaseReference userListRef = ref.child("UserList");
                             DatabaseReference idRef = userListRef.child(nickname);
@@ -129,7 +185,7 @@ public class SignUpActivity extends AppCompatActivity {
                             //idRef.updateChildren(userListUpdates);
 
                             //두번째 방법
-                            UserList userList = new UserList(email, nickname, filePath.toString());
+                            UserList userList = new UserList(email, nickname, null);
                             idRef.setValue(userList);
 
                             //DisplayName을 닉네임으로 설정.
@@ -142,7 +198,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            if(task.isSuccessful()){
+                                            if (task.isSuccessful()) {
                                                 Log.d(TAG, "User profile updated.");
                                             }
                                         }

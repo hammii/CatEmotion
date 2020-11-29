@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -115,10 +116,17 @@ public class CommunityFragment extends Fragment {
             if (firebaseAuth.getCurrentUser() == null) {
                 Toast.makeText(getContext(), "로그인 후 이용해주세요.", Toast.LENGTH_SHORT).show();
             } else {
-                startActivity(new Intent(mActivity, AddPostActivity.class));
+                mActivity.startActivityForResult(new Intent(mActivity, AddPostActivity.class), 100);
             }
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        adapter.notifyDataSetChanged();
     }
 }

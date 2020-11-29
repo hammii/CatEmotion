@@ -21,7 +21,6 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/iv_userImage"
-                tools:src="@drawable/cat_face"
                 android:padding="10dp"
                 android:layout_marginBottom="10dp"
                 />
