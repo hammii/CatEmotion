@@ -5,7 +5,7 @@
     <string name="tfe_ic_model" translatable="false">Model:</string>
     <string name="tfe_ic_device" translatable="false">Device:</string>
 
-    <string name="app_name">CatEmotion</string>
+    <string name="app_name">Cat Emotion</string>
     <string name="title_camera">Camera</string>
 
     <string name="title_ranking">Ranking</string>
