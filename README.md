@@ -2,8 +2,8 @@
 
 ## Index
   - [Overview](#overview) 
+  - [Development Environment](#development-environment)
   - [Getting Started](#getting-started)
-  - [Contributing](#contributing)
   - [Authors](#authors)
   - [License](#license)
 
@@ -25,12 +25,20 @@ This project's purpose is to **recognize emotions through the cat's tail and sha
 | :---------------: | :---------------: | :---------------: | :---------------: |
 | <img width="185" alt="home" src="https://user-images.githubusercontent.com/44565524/121726958-3860dd00-cb26-11eb-973d-93cea2b28cf0.png"> | <img width="185" alt="ranking" src="https://user-images.githubusercontent.com/44565524/121727241-9d1c3780-cb26-11eb-85b4-a811a8f91e59.png"> | <img width="183" alt="camera" src="https://user-images.githubusercontent.com/44565524/121727593-11ef7180-cb27-11eb-9917-8084d9eea3fc.png"> | <img width="187" alt="album" src="https://user-images.githubusercontent.com/44565524/121727752-482cf100-cb27-11eb-87eb-279319f7b342.png"> |
 
+## Development Environment
+-  Android Studio @4.0.1
+    - minSdkVersion: 21
+    - targetSdkVersion: 28
+-  TensorFlow Lite (Mobilenet_V1_1.0_224_quant)
+-  Firebase (Authentication, Realtime Database, Storage)
+
 ## Getting Started
 **click `Use this template` and use this template!**
 <!--
 ### Depencies
  Write about need to install the software and how to install them 
 -->
+
 ### Installing
 <!-- A step by step series of examples that tell you how to get a development 
 env running
@@ -50,11 +58,6 @@ And repeat
 ## Deployment
  Add additional notes about how to deploy this on a live system
  -->
-## Contributing
-<!-- Write the way to contribute -->
-I am looking for someone to help with this project. Please advise and point out.  
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code
-of conduct, and the process for submitting pull requests to us.
 
 ## Authors
   - [hammii](https://github.com/hammii) - **HaYeong Jang** - <hyj9829@gmail.com>
