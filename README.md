@@ -1,4 +1,5 @@
 # CatEmotion
+For more information, go to [wiki](https://github.com/hammii/CatEmotion/Wiki).
 
 ## Index
   - [Overview](#overview) 
@@ -9,7 +10,7 @@
 
 ## About CatEmotion 🐈 📸
 <!--Wirte one paragraph of project description -->  
-This project's purpose is to **recognize emotions through the cat's tail and share the photos.**  
+This project's purpose is to **recognize emotions through the cat's tail**   and  **share the photos.**  
 
 ## Overview
 <!-- Write Overview about this project -->
