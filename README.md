@@ -7,7 +7,7 @@
   - [Authors](#authors)
   - [License](#license)
 
-## About CatEmotion
+## About CatEmotion 🐈 📸
 <!--Wirte one paragraph of project description -->  
 This project's purpose is to **recognize emotions through the cat's tail and share the photos.**  
 
@@ -27,37 +27,41 @@ This project's purpose is to **recognize emotions through the cat's tail and sha
 
 ## Development Environment
 -  Android Studio @4.0.1
-    - minSdkVersion: 21
+    - minSdkVersion: 23
     - targetSdkVersion: 28
 -  TensorFlow Lite (Mobilenet_V1_1.0_224_quant)
 -  Firebase (Authentication, Realtime Database, Storage)
 
 ## Getting Started
-**click `Use this template` and use this template!**
-<!--
-### Depencies
- Write about need to install the software and how to install them 
--->
 
-### Installing
-<!-- A step by step series of examples that tell you how to get a development 
-env running
+### Step 1. Clone the CatEmotion source code
+Clone the CatEmotion GitHub repository to your computer to get the demo application.
+```
+git clone https://github.com/hammii/CatEmotion
+```
 
-Say what the step will be
+To do this, open Android Studio and select Open an existing project. <br/><br/>
+<img width="469" alt="android studio" src="https://user-images.githubusercontent.com/44565524/121735440-16b92300-cb31-11eb-947a-d5abe8bae2c9.png">
 
-    Give the example
+### Step 2. Build the Android Studio project
+Select `Build -> Make Project` and check that the project builds successfully. <br/><br/>
+<img width="440" alt="build" src="https://user-images.githubusercontent.com/44565524/121736528-a4e1d900-cb32-11eb-9a5b-e606b2df30ed.png">
 
-And repeat
+You will need Android SDK configured in the settings. You'll need at least SDK version 23. <br/>
+The `build.gradle` file will prompt you to download any missing libraries.
 
-    until finished
--->
-1. Click `Use this template` button 
-2. Create New Repository
-3. Update Readme and Others(Other features are noted in comments.)
-<!--
-## Deployment
- Add additional notes about how to deploy this on a live system
- -->
+<p>
+<img width="44%" alt="gradle" src="https://user-images.githubusercontent.com/44565524/121737403-c5f6f980-cb33-11eb-8ea7-1db57c5f2303.png">
+<img width="50%" alt="min" src="https://user-images.githubusercontent.com/44565524/121737486-e1fa9b00-cb33-11eb-979a-c3cd3f9d6245.png">
+</p>
+
+### Step 3. Install and run the app
+Connect the Android device to the computer and be sure to approve any ADB permission prompts that appear on your phone. <br/>
+Select `Run -> Run 'app'` Select the deployment target in the connected devices to the device on which the app will be installed. This will install the app on the device.
+
+<img width="610" alt="run" src="https://user-images.githubusercontent.com/44565524/121738442-305c6980-cb35-11eb-99d6-5e011fadd697.png">
+
+When you run the app the first time, the app will request permission to access the camera.
 
 ## Authors
   - [hammii](https://github.com/hammii) - **HaYeong Jang** - <hyj9829@gmail.com>
