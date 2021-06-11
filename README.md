@@ -21,9 +21,9 @@ This project's purpose is to **recognize emotions through the cat's tail and sha
 - Contribute Template
 - Pull Request Build Test(With Github Actions) -->
 
-Home | Ranking | Camera  | Album |
+| Home | Ranking | Camera  | Album |
 | :---------------: | :---------------: | :---------------: | :---------------: |
-|  |  |  |  |
+| <img width="185" alt="home" src="https://user-images.githubusercontent.com/44565524/121726958-3860dd00-cb26-11eb-973d-93cea2b28cf0.png"> | <img width="185" alt="ranking" src="https://user-images.githubusercontent.com/44565524/121727241-9d1c3780-cb26-11eb-85b4-a811a8f91e59.png"> | <img width="183" alt="camera" src="https://user-images.githubusercontent.com/44565524/121727593-11ef7180-cb27-11eb-9917-8084d9eea3fc.png"> | <img width="187" alt="album" src="https://user-images.githubusercontent.com/44565524/121727752-482cf100-cb27-11eb-87eb-279319f7b342.png"> |
 
 ## Getting Started
 **click `Use this template` and use this template!**
