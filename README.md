@@ -1,5 +1,5 @@
 # CatEmotion
-For more information, go to [wiki](https://github.com/hammii/CatEmotion/Wiki).
+For more information, go to [Wiki](https://github.com/hammii/CatEmotion/wiki).
 
 ## Index
   - [Overview](#overview) 
